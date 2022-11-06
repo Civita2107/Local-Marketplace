@@ -1,46 +1,96 @@
 <?php
 
+/**
+ * La classe EUtente contiene tutti gli attributi e metodi base che riguardano gli utenti
+ * Gli attributi sono:
+ * nome: nome dell'utente;
+ * cognome: cognome dell'utente
+ * email: email dell'utente
+ * password: password dell'utente
+ * idUser: id univoco dell'utente
+ * idFoto: id della foto utente
+ * dataIscrizione: data di iscrizione dell'utente
+ * dataFineBan: data fine del ban utente se bannato
+ * ban: utente bannato o no
+ * admin: se utente admin o no
+ * @access public
+ * @author Gruppo 7
+ * @package Entity
+ */
+
 class EUtente implements JsonSerializable
 {
+    /**
+     * Nome Utente
+     * @var string|null
+     */
     private string $nome;
+    /**
+     * Cognome Utente
+     * @var string|null
+     */
     private string $cognome;
-    private  $idUser;
+    /**
+     * id Utente univoco
+     * @var int
+     */
+    private int $idUser;
+    /**
+     * email Utente
+     * @var string|null
+     */
     private string $email;
+    /**
+     * password Utente
+     * @var string|null
+     */
     private string $password;
+    /**
+     * id Foto Utente
+     * @var int|null
+     */
     private $idFoto;
-    private DateTime $dataIscrizione;
-    private DateTime $dataFineBan;
+    /**
+     * data iscrizione Utente
+     * @var |mixed|null
+     */
+    private  $dataIscrizione;
+    /**
+     * data fine ban Utente
+     * @var |mixed|null
+     */
+    private  $dataFineBan;
+    /**
+     * ban Utente
+     * @var mixed|null
+     */
     private $ban;
+    /**
+     * admin Utente
+     * @var bool|null
+     */
     private bool $admin;
 
-    /**
-     * @param string $nome
-     * @param string $cognome
-     * @param int $idUser
-     * @param string $email
-     * @param string $password
-     * @param $idImmagine
-     * @param $dataIscrizione
-     * @param $dataFineBan
-     * @param $ban
-     * @param bool $admin
-     */
-    public function __construct(string $nome = null, string $cognome=null, string $email=null, $idImmagine=null, $dataIscrizione=null, $dataFineBan=null, $ban=null, string $password=null, bool $admin=null)
+    //--------------------------------------------COSTRUTTORE---------------------------------------------------------------------------------------------------------------------------------------------
+
+    public function __construct(string $nome = null, string $cognome=null, string $email=null, $idFoto=null, $dataIscrizione=null, $dataFineBan=null, $ban=null, string $password=null, bool $admin=null)
     {
         $this->nome = $nome;
         $this->cognome = $cognome;
         $this->email = $email;
         $this->password = $password;
-        $this->idFoto = $idImmagine;
+        $this->idFoto = $idFoto;
         $this->dataIscrizione = $dataIscrizione;
         $this->dataFineBan = $dataFineBan;
         $this->ban = $ban;
         $this->admin = $admin;
     }
 
+    // --------------------------------------------METODI GET E SET---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     /**
-     * @return int
+     * @return int id Utente
      */
     public function getIdUser(): int
     {
@@ -48,14 +98,14 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @param int $idUser
+     * @param int $idUser id Utente
      */
     public function setIdUser( $idUser): void
     {
         $this->idUser = $idUser;
     }
     /**
-     * @return string
+     * @return string nome Utente
      */
     public function getNome(): string
     {
@@ -63,7 +113,7 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @param string $nome
+     * @param string $nome nome Utente
      */
     public function setNome(string $nome): void
     {
@@ -71,7 +121,7 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string cognome Utente
      */
     public function getCognome(): string
     {
@@ -79,7 +129,7 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @param string $cognome
+     * @param string $cognome cognome Utente
      */
     public function setCognome(string $cognome): void
     {
@@ -87,7 +137,7 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string password Utente
      */
     public function getPassword(): string
     {
@@ -95,7 +145,7 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @param string $password
+     * @param string $password password Utente
      */
     public function setPassword(string $password): void
     {
@@ -103,7 +153,7 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return string email Utente
      */
     public function getEmail(): string
     {
@@ -111,7 +161,7 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @param string $email
+     * @param string $email email Utente
      */
     public function setEmail(string $email): void
     {
@@ -119,54 +169,54 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @return int
+     * @return int id foto Utente
      */
-    public function getIdFoto(): int
+    public function getIdFoto()
     {
         return $this->idFoto;
     }
 
     /**
-     * @param int $idFoto
+     * @param $idFoto id foto Utente
      */
-    public function setIdFoto(int $idFoto): void
+    public function setIdFoto($idFoto): void
     {
         $this->idFoto = $idFoto;
     }
 
     /**
-     * @return DateTime
+     * @return  data iscrizione Utente
      */
-    public function getDataIscrizione(): DateTime
+    public function getDataIscrizione()
     {
         return $this->dataIscrizione;
     }
 
     /**
-     * @param DateTime $dataIscrizione
+     * @param  $dataIscrizione data iscrizione Utente
      */
-    public function setDataIscrizione(DateTime $dataIscrizione): void
+    public function setDataIscrizione( $dataIscrizione): void
     {
         $this->dataIscrizione = $dataIscrizione;
     }
 
     /**
-     * @return DateTime
+     * @return  data fine ban Utente
      */
-    public function getDataFineBan(): DateTime
+    public function getDataFineBan()
     {
         return $this->dataFineBan;
     }
 
     /**
-     * @param DateTime $dataFineBan
+     * @param  $dataFineBan data fine ban Utente
      */
-    public function setDataFineBan(DateTime $dataFineBan): void
+    public function setDataFineBan( $dataFineBan): void
     {
         $this->dataFineBan = $dataFineBan;
     }
     /**
-     * @return  mixed $ban
+     * @return  mixed $ban ban Utente
      */
     public function isBan(): bool
     {
@@ -174,14 +224,14 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @param mixed $ban
+     * @param mixed $ban ban Utente
      */
     public function setBan($ban): void
     {
         $this->ban = $ban;
     }
     /**
-     * @return bool
+     * @return bool admin Utente
      */
     public function getAdmin(): bool
     {
@@ -189,7 +239,7 @@ class EUtente implements JsonSerializable
     }
 
     /**
-     * @param bool $admin
+     * @param bool $admin admin Utente
      */
     public function setAdmin(bool $admin): void
     {
@@ -207,7 +257,7 @@ class EUtente implements JsonSerializable
                 'idUser'   => $this->getIdUser(),
                 'email'   => $this->getEmail(),
                 'password'   => $this->getPassword(),
-                'idImmagine'   => $this->getIdFoto(),
+                'idFoto'   => $this->getIdFoto(),
                 'dataIscrizione'   => $this->getDataIscrizione(),
                 'dataFineBan'   => $this->getDataFineBan(),
                 'ban'   => $this->isBan(),

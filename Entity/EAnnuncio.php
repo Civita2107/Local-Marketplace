@@ -6,7 +6,7 @@ class EAnnuncio implements JsonSerializable
     private string $descrizione;
     private  $prezzo;
     private int $idFoto;
-    private DateTime $data;
+    private  $data;
     private $idAnnuncio;
     private int $idVenditore;
     private int $idCompratore;
@@ -18,13 +18,13 @@ class EAnnuncio implements JsonSerializable
      * @param string $descrizione
      * @param float $prezzo
      * @param int $idFoto
-     * @param DateTime $data
+     * @param  $data
      * @param int $idAnnuncio
      * @param int $idVenditore
      * @param int $idCompratore
      * @param string $categoria
      */
-    public function __construct(string $titolo, string $descrizione,  $prezzo, int $idFoto, DateTime $data,  int $idVenditore,/* int $idCompratore,*/ string $categoria, bool $ban)
+    public function __construct(string $titolo, string $descrizione,  $prezzo, int $idFoto,  $data,  int $idVenditore,/* int $idCompratore,*/ string $categoria, bool $ban)
     {
         $this->titolo = $titolo;
         $this->descrizione = $descrizione;
@@ -134,17 +134,17 @@ class EAnnuncio implements JsonSerializable
         $this->prezzo = $prezzo;
     }
     /**
-     * @return DateTime
+     * @return 
      */
-    public function getData(): DateTime
+    public function getData()
     {
         return $this->data;
     }
 
     /**
-     * @param DateTime $data
+     * @param  $data
      */
-    public function setData(DateTime $data): void
+    public function setData( $data): void
     {
         $this->data = $data;
     }
@@ -217,17 +217,17 @@ class EAnnuncio implements JsonSerializable
 
     /**
     public function addFoto($id): void{
-        array_push($this->arrayFoto);
+    array_push($this->arrayFoto);
     }
 
     public function remFoto($id): void{
-        foreach ($this->arrayFoto as $f => $foto){
-            if ($foto == $id){
-                unset($this->arrayFoto[$f]);
-            }
-        }
+    foreach ($this->arrayFoto as $f => $foto){
+    if ($foto == $id){
+    unset($this->arrayFoto[$f]);
     }
-    */
+    }
+    }
+     */
 
 
     public function jsonSerialize()
